@@ -1,6 +1,7 @@
 name: Execise1
 on:
-    workflow_dispatch
+    - workflow_dispatch
+    - push
 jobs:
     init:
         runs-on: ubuntu-latest
