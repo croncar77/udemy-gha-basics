@@ -1,0 +1,30 @@
+name: Execise1 With Jobs In Parallel
+on:
+    - workflow_dispatch
+    - push
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/setup-node@v6
+              with:
+                node-version: 24
+            - uses: actions/checkout@v5
+            - run: npm ci
+            - name: Build
+              run: npm run build
+            - run: echo "Deploying ..."
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - run: npm ci
+            - name: Test
+              run: npm run test
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - run: npm run lint
+
+
+
