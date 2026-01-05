@@ -11,6 +11,12 @@ jobs:
                 node-version: 24
             - uses: actions/checkout@v5
             - run: npm ci
-            - run: npm test
+            - name: Build
+              run: npm build
+            - name: Test
+              run: npm test
+            - name: Lint
+              run: npm lint
+            - run: echo "Deploying ..."
 
 
