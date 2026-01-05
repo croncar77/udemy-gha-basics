@@ -1,0 +1,13 @@
+name: Execise1
+on:
+    workflow_dispatch
+jobs:
+    init:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/setup-node
+            - uses: actions/checkout@v5
+            - run: npm ci
+            - run: npm test
+
+
