@@ -1,6 +1,7 @@
 name: Print Issue Event Detail
 on:
-    issues
+    issues:
+      types: [opened, edited] 
 jobs:
     print_event_details:
         runs-on: ubuntu-latest
