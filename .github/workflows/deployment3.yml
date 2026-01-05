@@ -1,0 +1,34 @@
+name: Execise1 With Jobs In Sequence
+on:
+    - workflow_dispatch
+    - push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - run: npm ci
+            - name: Test
+              run: npm run test
+    lint:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - run: npm ci
+            - run: npm run lint
+    build:
+        needs: [test, lint]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/setup-node@v6
+              with:
+                node-version: 24
+            - uses: actions/checkout@v5
+            - run: npm ci
+            - name: Build
+              run: npm run build
+            - run: echo "Deploying ..."
+
+
+
