@@ -1,7 +1,7 @@
 name: Execise1 With Jobs In Sequence
 on:
-    - workflow_dispatch
-    - push
+    workflow_dispatch:
+    push:
 jobs:
     test:
         runs-on: ubuntu-latest
